@@ -1,0 +1,62 @@
+create schema ekart_account
+use ekart_account
+
+create table account(
+	user_id varchar(20) primary key,
+    name varchar(50) not null,
+    email varchar(50) not null,
+    password varchar(50) not null
+)
+
+create schema ekart_product
+use ekart_product
+
+create table Product(
+prod_id varchar(50) primary key,
+displayname varchar(100) not null,
+shortnesc varchar(100) not null,
+description varchar(10000) not null,
+category varchar(10) not null,
+price decimal(10,2) not null,
+discount int(3),
+deliverycharge int(3)
+)
+
+
+insert into product values('P1001',"Redmi Note 7 pro",'A phone for the millenials',"The Redmi Note 7 Pro is one of the most feature packed phones in its price bracket, bringing a premium design, capable octa-core processor, 48-megapixel camera, and fast charging support to the table. The phone packs a 6.3-inch full-HD+ (1080x2340 pixels) LTPS In-Cell display protected by a layer of Gorilla Glass 5. Content on the display looks sharp with crisp colours, but at the same time, it is also quite reflective.
+
+The phone is powered by the Snapdragon 675 processor ticking alongside up to 6GB of RAM. Be it heavy multitasking or games like PUBG Mobile and Asphalt 9, the phone barely struggles at all. The Redmi Note 7 Pro runs MIUI 10 based on Android 9 Pie, and even though it is rich in features, you will also have to see pesky ads. 
+
+The phone’s 48-megapixel main camera captures beautiful images with ample detail, high dynamic range, and good vibrancy. The night mode also performs well, while selfies captured by the 32-megapixel front camera also look sharp with natural colours and edge detection in bokeh mode. The 4,000mAh battery ensures that the Redmi Note 7 Pro easily sails past a full day of usage, while support for Qualcomm's Quick Charge 4.0 fast charging technology helps to quickly top up the battery.",
+"Mobiles",17000.0,5,1000
+)
+
+insert into product values('P1002',"Nirma Washing Powder","A washing powder for all","Tough and strong washing powder.",
+"Household",500,0,50
+)
+
+
+create schema ekart_cart
+use ekart_cart
+
+create table cart(
+user_id varchar(20),
+product_id varchar(50),
+quantity int(3) ,
+primary key(user_id,product_id)
+)
+
+
+create schema ekart_address
+use ekart_address
+
+create table address(
+	address_id varchar(10) primary key,
+    address varchar(1000),
+    city varchar(40),
+    state varchar(40),
+    pincode int(6),
+    phonenumber bigint,
+    user_id varchar(20)
+)
+
